@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+
+<configuration>
+  <import
+    class="ch.qos.logback.classic.encoder.PatternLayoutEncoder" />
+  <import class="ch.qos.logback.core.ConsoleAppender" />
+
+  <appender name="Console" class="ConsoleAppender">
+    <encoder class="PatternLayoutEncoder">
+      <pattern>%d{yyy-MM-dd HH:mm:ss.SSS Z} [%thread] %-5level %logger{50} -- %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <root level="trace">
+    <appender-ref ref="Console" />
+  </root>
+  
+</configuration>

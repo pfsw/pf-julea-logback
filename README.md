@@ -7,11 +7,11 @@ This is usually helpful if functionality gets tested by a unit test that does no
 However, if there is some logging in the tested code it might be an option to ensure that specific log messages have been created
 or have **not** been created during the execution of that code.
 
-This library is built with JDK **8** and supports tracking of **logback** loggers only!  
+This library is built with JDK **11** and supports tracking of **logback** loggers only! [github](https://github.com/qos-ch/logback/)  
 It can be used with **JUnit4** and **JUnit5**.    
 
-Of course this library can also be used with **jboss-logging** and **commons-logging** API as binding libraries to **slf4j** are
-in the classpath.
+Of course this library can also be used with **jboss-logging** and **commons-logging** API if adequate binding libraries to **slf4j**
+are in the classpath.
 
 Set the following maven or gradle dependencies as appropriate for your project:
 
@@ -39,7 +39,7 @@ Maven:
   <dependency>
     <groupId>org.junit.jupiter</groupId>
     <artifactId>junit-jupiter-api</artifactId>
-    <version>5.9.3</version>
+    <version>5.11.0</version>
     <scope>test</scope>
   </dependency>
 </dependencies>
@@ -49,9 +49,9 @@ Gradle:
 
 ````groovy
 dependencies {
-  testImplementation group: 'org.pfsw', name: 'pf-julea-logback', version: '1.1.0'
-  testImplementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.20.0'
-  testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.9.3'
+  testImplementation group: 'org.pfsw', name: 'pf-julea-logback', version: '1.0.0'
+  testImplementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.5.7'
+  testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.11.0'
 }
 ````
 
@@ -64,7 +64,7 @@ Maven:
   <dependency>
     <groupId>org.pfsw</groupId>
     <artifactId>pf-julea-logback</artifactId>
-    <version>1.1.0</version>
+    <version>1.0.0</version>
     <scope>test</scope>
   </dependency>
   <dependency>
@@ -98,9 +98,9 @@ JUnit4 and JUnit5 cannot be mixed in a single test class!
 
 ### JUnit5
 
-**Variant 1**: Extending interface ``Junit5logbackAsserter``
+**Variant 1**: Extending interface ``Junit5LogbackAsserter``
 
-- Implement interface ``Junit5logbackAsserter``
+- Implement interface ``Junit5LogbackAsserter``
 - Declare a field *logTracker* annotated as ``@RegisterExtension``
 - Implement method ``public LogEntriesTracker getLogTracker()``
 
@@ -108,13 +108,13 @@ JUnit4 and JUnit5 cannot be mixed in a single test class!
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.pfsw.julea.core.LogEntriesTracker;
-import org.pfsw.julea.logback.junit5.Junit5logbackAsserter;
+import org.pfsw.julea.logback.junit5.Junit5LogbackAsserter;
 import org.pfsw.julea.logback.junit5.Junit5LogEntriesTracker;
 import org.pfsw.julea.logback.testhelper.LogId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Junit5AsserterTest implements Junit5logbackAsserter
+public class Junit5AsserterTest implements Junit5LogbackAsserter
 {
   private static final Logger LOG = LoggerFactory.getLogger(Junit5AsserterTest.class);
   private enum LogId { ID001, ID002, ID003 }
@@ -145,14 +145,14 @@ public class Junit5AsserterTest implements Junit5logbackAsserter
 **Variant 2**: Static import of ``Junit5LogAssertions``
 
 - Declare ``import static org.pfsw.julea.core.assertions.Junit5LogAssertions.*;``
-- Declare a field *logTracker* annotated as ``@RegisterExtension`` using ``Junit5logbackTracker`` to initialize
+- Declare a field *logTracker* annotated as ``@RegisterExtension`` using ``Junit5LogbackTracker`` to initialize
 
 ````java
 import static org.pfsw.julea.core.assertions.Junit5LogAssertions.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.pfsw.julea.core.LogLevel;
-import org.pfsw.julea.logback.junit5.Junit5logbackTracker;
+import org.pfsw.julea.logback.junit5.Junit5LogbackTracker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -161,7 +161,7 @@ public class Junit5Test
   private static final Logger LOG = LoggerFactory.getLogger(Junit5Test.class);
 
   @RegisterExtension
-  public Junit5logbackTracker logTracker = Junit5logbackTracker.track(Junit5Test.class);
+  public Junit5LogbackTracker logTracker = Junit5LogbackTracker.track(Junit5Test.class);
 
   @Test
   public void test_log_entries()
@@ -176,9 +176,9 @@ public class Junit5Test
 
 ### JUnit4
 
-**Variant 1**: Extending interface ``Junit4logbackAsserter``
+**Variant 1**: Extending interface ``Junit4LogbackAsserter``
 
-- Implement interface ``Junit4logbackAsserter``
+- Implement interface ``Junit4LogbackAsserter``
 - Declare a field *logTracker* annotated as ``@Rule``
 - Implement method ``public LogEntriesTracker getLogTracker()``
 
@@ -187,13 +187,13 @@ public class Junit5Test
 import org.junit.Rule;
 import org.junit.Test;
 import org.pfsw.julea.core.LogEntriesTracker;
-import org.pfsw.julea.logback.junit4.junit4.Junit4logbackAsserter;
+import org.pfsw.julea.logback.junit4.junit4.Junit4LogbackAsserter;
 import org.pfsw.julea.logback.junit4.junit4.Junit4LogEntriesTracker;
 import org.pfsw.julea.logback.testhelper.LogId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Junit4AsserterTest implements Junit4logbackAsserter
+public class Junit4AsserterTest implements Junit4LogbackAsserter
 {
   private static final Logger LOG = LoggerFactory.getLogger(Junit4AsserterTest.class);
   private enum LogId { ID001, ID002, ID003 }
@@ -224,7 +224,7 @@ public class Junit4AsserterTest implements Junit4logbackAsserter
 **Variant 2**: Static import of ``Junit4LogAssertions``
 
 - Declare ``import static org.pfsw.julea.core.assertions.Junit4LogAssertions.*;``
-- Declare a field *logTracker* annotated as ``@Rule`` using ``Junit4logbackTracker`` to initialize
+- Declare a field *logTracker* annotated as ``@Rule`` using ``Junit4LogbackTracker`` to initialize
 
 ````java
 import static org.pfsw.julea.core.assertions.Junit4LogAssertions.*;
@@ -240,7 +240,7 @@ public class Junit4Test
   private static final Logger LOG = LoggerFactory.getLogger(Junit4Test.class);
 
   @Rule
-  public Junit4logbackTracker logTracker = Junit4logbackTracker.track(Junit4Test.class);
+  public Junit4LogbackTracker logTracker = Junit4LogbackTracker.track(Junit4Test.class);
 
   @Test
   public void test_log_entries()

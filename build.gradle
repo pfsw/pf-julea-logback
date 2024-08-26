@@ -8,10 +8,10 @@ group = 'org.pfsw'
 version = '1.0.0'
 
 ext {
-  javaVersion = '8'
+  javaVersion = '11'
   javaModuleNameSuffix = 'julea-logback'
   autoModuleName = "${group}.${javaModuleNameSuffix}"
-  libDisplayName = "PF JUnit Log Event Assertion (log4j2)"
+  libDisplayName = "PF JUnit Log Event Assertion (logback)"
   libDescription = "Library for asserting (logback) log events during junit testing"
     
   repoUrlThirdParty = project.hasProperty('thirdPartyRepoUrl') ? project.getProperty('thirdPartyRepoUrl') : ''
@@ -54,10 +54,10 @@ dependencies {
   
   testImplementation group: 'junit', name: 'junit', version: junit4Version
   testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: junit5Version
+  testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junit5Version
   testImplementation group: 'org.junit.vintage', name: 'junit-vintage-engine', version: junit5Version
   testImplementation group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
   testRuntimeOnly group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
-  testRuntimeOnly group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
 }
 
 project.sourceCompatibility = javaVersion
