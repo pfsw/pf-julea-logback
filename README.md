@@ -7,7 +7,7 @@ This is usually helpful if functionality gets tested by a unit test that does no
 However, if there is some logging in the tested code it might be an option to ensure that specific log messages have been created
 or have **not** been created during the execution of that code.
 
-This library is built with JDK **11** and supports tracking of **logback** loggers only! [github](https://github.com/qos-ch/logback/)  
+This library is built with JDK **11** and supports tracking of **logback** loggers only! (see [logback on github](https://github.com/qos-ch/logback/))  
 It can be used with **JUnit4** and **JUnit5**.    
 
 Of course this library can also be used with **jboss-logging** and **commons-logging** API if adequate binding libraries to **slf4j**
@@ -108,8 +108,8 @@ JUnit4 and JUnit5 cannot be mixed in a single test class!
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.pfsw.julea.core.LogEntriesTracker;
+import org.pfsw.julea.core.junit5.Junit5LogEntriesTracker;
 import org.pfsw.julea.logback.junit5.Junit5LogbackAsserter;
-import org.pfsw.julea.logback.junit5.Junit5LogEntriesTracker;
 import org.pfsw.julea.logback.testhelper.LogId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -187,8 +187,8 @@ public class Junit5Test
 import org.junit.Rule;
 import org.junit.Test;
 import org.pfsw.julea.core.LogEntriesTracker;
-import org.pfsw.julea.logback.junit4.junit4.Junit4LogbackAsserter;
-import org.pfsw.julea.logback.junit4.junit4.Junit4LogEntriesTracker;
+import org.pfsw.julea.core.junit4.Junit4LogEntriesTracker;
+import org.pfsw.julea.logback.junit4.Junit4LogbackAsserter;
 import org.pfsw.julea.logback.testhelper.LogId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -231,7 +231,7 @@ import static org.pfsw.julea.core.assertions.Junit4LogAssertions.*;
 import org.junit.Rule;
 import org.junit.Test;
 import org.pfsw.julea.core.LogLevel;
-import org.pfsw.julea.logback.junit4.junit4.Junit4logbackTracker;
+import org.pfsw.julea.logback.junit4.Junit4logbackTracker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
