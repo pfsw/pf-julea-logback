@@ -1,4 +1,6 @@
 /.idea
+/.eclipse
+/.vcode
 /.gradle/
 /.settings/
 /.classpath

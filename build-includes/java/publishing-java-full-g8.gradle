@@ -2,6 +2,8 @@ apply plugin: 'maven-publish'
 apply from: "${pfswGradleIncludePath}/java/dependencies.gradle"
 apply from: "${pfswGradleIncludePath}/java/pom-publishing.gradle"
 
+// === The following is needed to create the artifacts === //
+
 def getDate() {
   def date = new Date()
   date.format('yyyy-MM-dd')
@@ -45,21 +47,9 @@ jar {
   }
 }
 
-task sourcesJar(type: Jar, dependsOn: classes) {
-  classifier = 'sources'
-  from sourceSets.main.allSource
-  manifest {
-    attributes(manifest_attrs)
-  }
-}
-
-task javadocJar (type: Jar, dependsOn: javadoc) {
-  from javadoc.destinationDir
-}
-
-artifacts {
-  archives sourcesJar
-  archives javadocJar
+java {
+    withJavadocJar()
+    withSourcesJar()
 }
 
 tasks.withType(GenerateModuleMetadata) {
@@ -73,17 +63,6 @@ publishing {
       artifactId archivesBaseName
       version version
       from components.java
-
-      artifact sourcesJar {
-        classifier "sources"
-      }
-      artifact javadocJar {
-        classifier "javadoc"
-      }
-      artifact(dependenciesFile) {
-        classifier "dependencies"
-        extension "txt"
-      }
       
       pom.withXml {
         if (publishWithoutDependencies)
@@ -97,8 +76,8 @@ publishing {
       }
       
       pom {
-        name = libDisplayName
-        description = libDescription
+        name = project.hasProperty('libDisplayName') ? project.getProperty('libDisplayName') : null
+        description = project.hasProperty('libDescription') ? project.getProperty('libDescription') : null
         url = 'http://programmers-friend.org/'
         licenses {
           license {
@@ -121,35 +100,7 @@ publishing {
       }
     }
   }
-  repositories {
-    maven {
-      name 'LocalRelease'
-      url localReleasePath
-    }
-    maven {
-      name 'NexusRelease'
-      url nexusReleaseRepoUrl
-      credentials {
-        username = nexusUsername
-        password = nexusPassword
-      }
-    }
-    maven {
-      name 'MavenCentralStaging'
-      url ossrhUrlStaging
-      credentials {
-        username = ossrhUsername
-        password = ossrhPassword
-      }
-    }
-    maven {
-      name 'MavenCentralSnapshots'
-      url ossrhUrlSnapshots
-      credentials {
-        username = ossrhUsername
-        password = ossrhPassword
-      }
-    }
-  }
+  // repositoriesClosure - see common/ext-variables.gradle
+  repositories repositoriesClosure
 }
 
