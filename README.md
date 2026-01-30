@@ -28,7 +28,7 @@ Maven:
   <dependency>
     <groupId>org.pfsw</groupId>
     <artifactId>pf-julea-logback</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <scope>test</scope>
   </dependency>
   <dependency>
@@ -49,7 +49,7 @@ Gradle:
 
 ````groovy
 dependencies {
-  testImplementation group: 'org.pfsw', name: 'pf-julea-logback', version: '1.0.0'
+  testImplementation group: 'org.pfsw', name: 'pf-julea-logback', version: '1.1.0'
   testImplementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.5.7'
   testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.11.0'
 }
@@ -64,7 +64,7 @@ Maven:
   <dependency>
     <groupId>org.pfsw</groupId>
     <artifactId>pf-julea-logback</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <scope>test</scope>
   </dependency>
   <dependency>
@@ -85,7 +85,7 @@ Gradle:
 
 ````groovy
 dependencies {
-  testImplementation group: 'org.pfsw', name: 'pf-julea-logback', version: '1.0.0'
+  testImplementation group: 'org.pfsw', name: 'pf-julea-logback', version: '1.1.0'
   testImplementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.5.7'
   testImplementation group: 'junit', name: 'junit', version: '4.13.2'
 }

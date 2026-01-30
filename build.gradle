@@ -5,7 +5,7 @@ plugins {
 apply plugin: 'java-library'
 
 group = 'org.pfsw'
-version = '1.0.1'
+version = '1.1.0'
 
 ext {
   javaVersion = '11'
@@ -57,7 +57,7 @@ signing {
 }
 
 dependencies {
-  api group: group, name: 'pf-julea-core', version: '1.0.0'
+  api group: group, name: 'pf-julea-core', version: '1.1.0'
   compileOnly group: 'junit', name: 'junit', version: junit4Version
   compileOnly group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: junit5Version
   compileOnly group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
