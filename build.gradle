@@ -5,7 +5,7 @@ plugins {
 apply plugin: 'java-library'
 
 group = 'org.pfsw'
-version = '1.1.0'
+version = '1.1.1'
 
 ext {
   javaVersion = '11'
@@ -33,10 +33,11 @@ ext {
   publishFixScopeCompile = true // not really relevant
   publishFixScopeProvided = true // not really relevant
 
-  logbackVersion = '1.5.7'
+  logbackVersion = '1.5.38'
   slf4jVersion = '1.7.36'
   junit4Version = '4.13.2'
-  junit5Version = '5.11.0'
+  junit5Version = '5.14.4'
+  jupiterPlatformVersion = '1.14.4'
 
 	repositoriesClosure = {
 	  if (islocalDevelopment)
@@ -71,7 +72,7 @@ tasks.withType(JavaCompile) {
 apply from: "${includePath}/java/publishing-java-full-maven-central.gradle"
 
 dependencies {
-  api group: group, name: 'pf-julea-core', version: '1.1.0'
+  api group: group, name: 'pf-julea-core', version: '1.1.1'
   compileOnly group: 'junit', name: 'junit', version: junit4Version
   compileOnly group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: junit5Version
   compileOnly group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
@@ -83,6 +84,7 @@ dependencies {
   testImplementation group: 'org.junit.vintage', name: 'junit-vintage-engine', version: junit5Version
   testImplementation group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
   testRuntimeOnly group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
+  testRuntimeOnly group: 'org.junit.platform', name: 'junit-platform-launcher', version: jupiterPlatformVersion
 }
 
 tasks.withType(Javadoc) {

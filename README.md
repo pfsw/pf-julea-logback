@@ -15,7 +15,7 @@ are in the classpath.
 
 Set the following maven or gradle dependencies as appropriate for your project:
 
-## Dependencies
+## Dependencies in your project
 
 See also [mvnrepository](https://mvnrepository.com/artifact/org.pfsw/pf-julea-logback).
 
@@ -28,18 +28,18 @@ Maven:
   <dependency>
     <groupId>org.pfsw</groupId>
     <artifactId>pf-julea-logback</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
     <scope>test</scope>
   </dependency>
   <dependency>
     <groupId>ch.qos.logback</groupId>
     <artifactId>logback-core</artifactId>
-    <version>1.5.7</version>
+    <version>1.5.38</version>
   </dependency>
   <dependency>
     <groupId>org.junit.jupiter</groupId>
     <artifactId>junit-jupiter-api</artifactId>
-    <version>5.11.0</version>
+    <version>5.14.4</version>
     <scope>test</scope>
   </dependency>
 </dependencies>
@@ -49,9 +49,9 @@ Gradle:
 
 ````groovy
 dependencies {
-  testImplementation group: 'org.pfsw', name: 'pf-julea-logback', version: '1.1.0'
-  testImplementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.5.7'
-  testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.11.0'
+  testImplementation group: 'org.pfsw', name: 'pf-julea-logback', version: '1.1.1'
+  testImplementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.5.38'
+  testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.14.4'
 }
 ````
 
@@ -64,13 +64,13 @@ Maven:
   <dependency>
     <groupId>org.pfsw</groupId>
     <artifactId>pf-julea-logback</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
     <scope>test</scope>
   </dependency>
   <dependency>
     <groupId>ch.qos.logback</groupId>
     <artifactId>logback-core</artifactId>
-    <version>1.5.7</version>
+    <version>1.5.38</version>
   </dependency>
   <dependency>
     <groupId>junit</groupId>
@@ -85,8 +85,8 @@ Gradle:
 
 ````groovy
 dependencies {
-  testImplementation group: 'org.pfsw', name: 'pf-julea-logback', version: '1.1.0'
-  testImplementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.5.7'
+  testImplementation group: 'org.pfsw', name: 'pf-julea-logback', version: '1.1.1'
+  testImplementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.5.38'
   testImplementation group: 'junit', name: 'junit', version: '4.13.2'
 }
 ````

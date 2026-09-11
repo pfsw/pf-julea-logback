@@ -1,5 +1,10 @@
 # Release notes for pf-julea-logback (JUnit Log Event Assertion Logback)
 
+## Version 1.1.1 (11/09/2026), 25 Unit-Tests, 100.0% Coverage
+
+- Upgrade to pf-julea-core 1.1.1 due to a fixed typo in assertion messages
+- Mapped Log level ALL to LogBack level TRACE since ALL is deprecated
+
 ## Version 1.1.0 (31/01/2026), 25 Unit-Tests, 100.0% Coverage
 
 - Upgrade to pf-julea-core 1.1.0 for better assertion failure reporting

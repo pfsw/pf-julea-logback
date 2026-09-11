@@ -41,7 +41,7 @@ public class LogbackInMemoryLogAppender extends AppenderBase<ILoggingEvent> impl
   {
     Map<Level, LogLevel> mapping = new HashMap<>();
 
-    mapping.put(Level.ALL, LogLevel.ALL);
+    mapping.put(Level.TRACE, LogLevel.ALL);
     mapping.put(Level.TRACE, LogLevel.TRACE);
     mapping.put(Level.DEBUG, LogLevel.DEBUG);
     mapping.put(Level.INFO, LogLevel.INFO);
